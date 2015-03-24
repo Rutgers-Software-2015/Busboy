@@ -1,8 +1,8 @@
-package HostandBusboy;
+package Busboy;
 import ADT.*;
-import HostDefinitions.TableHandler;
 
 import java.awt.EventQueue;
+
 
 
 
@@ -28,16 +28,13 @@ import javax.swing.JCheckBox;
 import javax.swing.JToggleButton;
 import javax.swing.JTextPane;
 import javax.swing.UIManager;
+
+import ADT.*;
+import Login.LoginWindow;
 @SuppressWarnings("unused")
 
 public class BusboyProject extends JFrame implements ActionListener{
-	public Table table1_v =new Table(1,true);
-	public Table table2_v =new Table(2,true);
-	public Table table3_v =new Table(3,true);
-	public Table table4_v =new Table(4,true);
-	public Table table5_v =new Table(5,true);
-	public Table table6_v =new Table(6,true);
-	private JFrame frame;
+	public JFrame frame;
 	private JPanel Panel_1_Welcome;
 	private JPanel panel_2_TableStatus;
 	private JPanel panel_3_Status;
@@ -52,16 +49,19 @@ public class BusboyProject extends JFrame implements ActionListener{
 	private boolean Disable_Table_1,Disable_Table_2,Disable_Table_3,Disable_Table_4,Disable_Table_5,Disable_Table_6;
 	public TableHandler tablehandler = new TableHandler();
 	
+	/*
 	public static void main(String[] args) {
 					BusboyProject window = new BusboyProject();
 					window.frame.setVisible(true);
-	}
+	}*/
 
 	/**
 	 * Create the application.
 	 */
 	public BusboyProject() {
+		//BusboyProject window = new BusboyProject();
 		initialize();
+		this.frame.setVisible(true);
 	}
 
 	/**
@@ -213,37 +213,37 @@ public class BusboyProject extends JFrame implements ActionListener{
 		} else {System.out.println("Table 6: Clean");}
 		System.out.println("------------------------");
 		
-		JToggleButton Table1 = new JToggleButton("Table 1");
+		final JToggleButton Table1 = new JToggleButton("Table 1");
 		Table1.setForeground(new Color(255, 51, 0));
 		Table1.setFont(new Font("Papyrus", Font.BOLD, 28));
 		Table1.setBounds(91, 149, 223, 76);
 		panel_2_TableStatus.add(Table1);
 		
-		JToggleButton Table2 = new JToggleButton("Table 2");
+		final JToggleButton Table2 = new JToggleButton("Table 2");
 		Table2.setForeground(new Color(255, 51, 0));
 		Table2.setFont(new Font("Papyrus", Font.BOLD, 28));
 		Table2.setBounds(341, 149, 223, 76);
 		panel_2_TableStatus.add(Table2);
 		
-		JToggleButton Table3 = new JToggleButton("Table 3");
+		final JToggleButton Table3 = new JToggleButton("Table 3");
 		Table3.setForeground(new Color(255, 51, 0));
 		Table3.setFont(new Font("Papyrus", Font.BOLD, 28));
 		Table3.setBounds(600, 149, 223, 76);
 		panel_2_TableStatus.add(Table3);
 		
-		JToggleButton Table4 = new JToggleButton("Table 4");
+		final JToggleButton Table4 = new JToggleButton("Table 4");
 		Table4.setForeground(new Color(255, 51, 0));
 		Table4.setFont(new Font("Papyrus", Font.BOLD, 28));
 		Table4.setBounds(91, 300, 223, 76);
 		panel_2_TableStatus.add(Table4);
 		
-		JToggleButton Table5 = new JToggleButton("Table 5");
+		final JToggleButton Table5 = new JToggleButton("Table 5");
 		Table5.setForeground(new Color(255, 51, 0));
 		Table5.setFont(new Font("Papyrus", Font.BOLD, 28));
 		Table5.setBounds(341, 300, 223, 76);
 		panel_2_TableStatus.add(Table5);
 		
-		JToggleButton Table6 = new JToggleButton("Table 6");
+		final JToggleButton Table6 = new JToggleButton("Table 6");
 		Table6.setForeground(new Color(255, 51, 0));
 		Table6.setFont(new Font("Papyrus", Font.BOLD, 28));
 		Table6.setBounds(600, 300, 223, 76);
@@ -530,7 +530,6 @@ public class BusboyProject extends JFrame implements ActionListener{
 		});
 		
 		//FINAL INFORMATION
-		updateTables();
 		
 	
 		/************************************/
@@ -563,7 +562,8 @@ public class BusboyProject extends JFrame implements ActionListener{
 						} else {System.out.println("Table 6: Clean");}
 						System.out.println("------------------------");
 						System.out.println("RUN END");
-						System.exit(0);
+						new LoginWindow();
+						frame.dispose();
 					}
 				});
 			// Panel 2 Logout
@@ -592,13 +592,15 @@ public class BusboyProject extends JFrame implements ActionListener{
 						} else {System.out.println("Table 6: Clean");}
 						System.out.println("------------------------");
 						System.out.println("RUN END");
-								System.exit(0);
+						new LoginWindow();
+						frame.dispose();
 					}
 				});
 		}
 	/**
 	 * Launch the application.
 	 */
+	
 	
 	public void updateTables()
 	{
@@ -668,8 +670,9 @@ public class BusboyProject extends JFrame implements ActionListener{
 			tablehandler.set(6);
 			///Enable_Table_6 = true;
 			/*Table 6:Clean*/}
+		
 	}
-
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
