@@ -1,5 +1,5 @@
 package Busboy;
-import ADT.*;
+//import ADT.*;
 
 import java.awt.EventQueue;
 
@@ -34,6 +34,10 @@ import Login.LoginWindow;
 @SuppressWarnings("unused")
 
 public class BusboyProject extends JFrame implements ActionListener{
+
+	// Here I declared a new frame to place all of my buttons and panels upon, and new buttons, as well as panels. They we declared here so that they could be
+	// reused by other classes throughout my code. Boolean values were also defined here so they could be used by all of my functions as needed.
+	
 	public JFrame frame;
 	private JPanel Panel_1_Welcome;
 	private JPanel panel_2_TableStatus;
@@ -48,41 +52,37 @@ public class BusboyProject extends JFrame implements ActionListener{
 	private boolean Enable_Table_1,Enable_Table_2,Enable_Table_3,Enable_Table_4,Enable_Table_5,Enable_Table_6;
 	private boolean Disable_Table_1,Disable_Table_2,Disable_Table_3,Disable_Table_4,Disable_Table_5,Disable_Table_6;
 	public TableHandler tablehandler = new TableHandler();
-	
-	/*
-	public static void main(String[] args) {
-					BusboyProject window = new BusboyProject();
-					window.frame.setVisible(true);
-	}*/
 
-	/**
-	 * Create the application.
-	 */
+	
+// Public function used to create the frame and initialize all of my specifications for each panel within the frame. This was also used within the login screen 
+	// so that it would link to my interface once I logged in.
 	public BusboyProject() {
 		//BusboyProject window = new BusboyProject();
 		initialize();
 		this.frame.setVisible(true);
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	
+	// The contents of the frame would be initialized here.
 	private void initialize() {
-		//System.out.println("In busboy: ");
-		//System.out.println(table1_v.Table_Status);
-		//System.out.println(table1_v.Table_Status);
-		//System.out.println("------------------------");
 		
-		
+		// Here I declared a new statement "new run for busboy" so that I would be able to do some testing on my function. It would contain the initial statuses
+		// of each table. 
 		System.out.println("NEW RUN FOR BUSBOY");
 		System.out.println("------------------------");
 		
+		// A new frame for the busboy GUI is declared here, as well as its particular specifications, like its size and what happens when it is closed (just exits)
+		// Its card layout will also be declared here, which means that any newly declared panels will sit on the frame like a deck of cards, and can be
+		// "shuffled" through as required by the code.
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setSize(900,600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new CardLayout(0, 0));
+		
+		// A new panel is declared here, and will be the welcome window. It will contain several buttons, and titles to help the interface be more user friendly.
+		// Each new panel will be declared this way, and will have its own background, and will be set visible and invisible by action listeners so that panels
+		// can be swapped through easily, while having each of their states saved. 
 		
 		final JPanel Panel_1_Welcome = new JPanel();
 		Panel_1_Welcome.setBackground(new Color(255, 255, 153));
@@ -90,6 +90,8 @@ public class BusboyProject extends JFrame implements ActionListener{
 		Panel_1_Welcome.setLayout(null);
 		Panel_1_Welcome.setVisible(true);
 		
+		// This is the format for a new button declaration. Each button will have its own size, location on the panel, font style, color, and will be added to 
+		// the panel in such a format. (Many buttons will be declared throughout the code).
 		JButton btnBusboyInterface = new JButton("Change Table Status");
 		btnBusboyInterface.setFont(new Font("Papyrus", Font.BOLD, 28));
 		btnBusboyInterface.setForeground(new Color(255, 0, 0));
@@ -155,7 +157,9 @@ public class BusboyProject extends JFrame implements ActionListener{
 		System.out.println("------------------------");
 		/********************************************/
 		
-		// Take in initial table statuses here
+		// These buttons will be indicators showing the colors of the individual table status. If these buttons are visible, then the indicator will be red, and 
+		// if they are not, then they will be set invisible and an indicator behind them will glow green. Green represents a clean table, and Red represents a 
+		// dirty table.
 		
 		Table_1_i = new JButton("");
 		Table_1_i.setEnabled(false);
@@ -193,6 +197,8 @@ public class BusboyProject extends JFrame implements ActionListener{
 		Table_6_i.setBounds(600, 377, 223, 27);
 		panel_2_TableStatus.add(Table_6_i);
 		
+		
+		// The following represents the initial statuses of the table. If the indicator buttons are green, then the table is clean, or else it is unclean.
 		if(Table_1_i.isVisible()){
 			System.out.println("Table 1: Unclean");
 		} else {System.out.println("Table 1: Clean");}
@@ -212,6 +218,10 @@ public class BusboyProject extends JFrame implements ActionListener{
 			System.out.println("Table 6: Unclean");
 		} else {System.out.println("Table 6: Clean");}
 		System.out.println("------------------------");
+		
+		
+		// The buttons are used to display options for the table once the table is selected. They are toggle buttons since it is easier to activate a new panel
+		// once they are selected.
 		
 		final JToggleButton Table1 = new JToggleButton("Table 1");
 		Table1.setForeground(new Color(255, 51, 0));
@@ -335,6 +345,10 @@ public class BusboyProject extends JFrame implements ActionListener{
 		btnReturnToTable.setBounds(184, 305, 507, 76);
 		panel_4_Updated.add(btnReturnToTable);
 		
+		
+		// The next code represents listeners. 
+		// When a button is pressed, a panel will be invisible, and another will be set to visible (or vice versa). This is to flip between paneles./
+		// Listeners can also activate different indicators to go on and off depending on the type of table selected.
 		
 		/*************************************/
 		// Listeners Panel 1 (Busboy Interface)
@@ -530,7 +544,8 @@ public class BusboyProject extends JFrame implements ActionListener{
 		});
 		
 		//FINAL INFORMATION
-		
+		//After the logout button is pressed, then the final statuses of the tables will be displayed on the console for testing (to make sure the program did
+		//as it was supposed to do)
 	
 		/************************************/
 		// Logouts
@@ -601,7 +616,8 @@ public class BusboyProject extends JFrame implements ActionListener{
 	 * Launch the application.
 	 */
 	
-	
+	// The following function is meant to communicate with the Host GUI to signify that the table statuses have been updated. It uses handlers, but it will be 
+	// later implemented to use a database. For this demo, this function is irrelevant.
 	public void updateTables()
 	{
 		//FINAL INFORMATION
@@ -673,6 +689,7 @@ public class BusboyProject extends JFrame implements ActionListener{
 		
 	}
 	
+	// Used to eliminate a simple error. Irrelevant.
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
