@@ -253,7 +253,7 @@ public class BusboyProject extends JFrame implements ActionListener{
 		Table10.setBounds(306, 381, 161, 58);
 		TableStatus.add(Table10);
 		
-		JToggleButton Table1 = new JToggleButton("Table 1");
+		Table1 = new JToggleButton("Table 1");
 		Table1.addActionListener(this);
 		Table1.setForeground(Color.WHITE);
 		Table1.setFont(new Font("Tahoma", Font.BOLD, 20));
