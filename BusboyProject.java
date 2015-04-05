@@ -12,6 +12,7 @@ import java.awt.EventQueue;
 
 
 
+
 import javax.swing.JFrame;
 
 import java.awt.event.ItemEvent;
@@ -28,6 +29,7 @@ import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Rectangle;
@@ -51,6 +53,7 @@ import javax.swing.UIManager;
 
 
 
+
 import Login.LoginWindow;
 import Shared.GUITemplates.SubframeTemplate;
 import Shared.Gradients.GradientButton;
@@ -64,34 +67,24 @@ public class BusboyProject extends JFrame implements ActionListener{
 			private JPanel rootPanel,titlePanel;
 			private GradientPanel MainPanel;
 			private GradientButton logoutButton;
+			public GradientButton Help;
+			public GradientButton Message;
 			//private GradientButton logoutButton;
 			private JLabel titleLabel,dateAndTime;
 			//Other Variables
 			private Timer timer;
 			private JPanel TableStatus;
-			private JLabel lblMap;
 			
 			public JToggleButton Table1;
 			public JToggleButton Table2;
 			public JToggleButton Table3;
-			public JToggleButton Table4;
 			public JToggleButton Table5;
 			public JToggleButton Table6;
-			public JToggleButton Table7;
-			public JToggleButton Table8;
+			public JToggleButton Table4;
 			public JToggleButton Table9;
+			public JToggleButton Table8;
+			public JToggleButton Table7;
 			public JToggleButton Table10;
-			
-			public JButton Table1_Map;
-			public JButton Table2_Map;
-			public JButton Table3_Map;
-			public JButton Table4_Map;
-			public JButton Table5_Map;
-			public JButton Table6_Map;
-			public JButton Table7_Map;
-			public JButton Table8_Map;
-			public JButton Table9_Map;
-			public JButton Table10_Map;
 			
 	public BusboyProject() {
 		
@@ -154,7 +147,7 @@ public class BusboyProject extends JFrame implements ActionListener{
 		MainPanel.setBounds(0,0,1200,652);
 		
 		logoutButton = new GradientButton("LOGOUT");
-		logoutButton.setBounds(187, 550, 825, 66);
+		logoutButton.setBounds(10, 551, 371, 66);
 		logoutButton.setFocusPainted(false);
 		logoutButton.setFont(logoutButton.getFont().deriveFont(16.0f));
 		MainPanel.add(logoutButton);
@@ -171,86 +164,75 @@ public class BusboyProject extends JFrame implements ActionListener{
 		JLabel Title_Status = new JLabel("Change Table Status");
 		Title_Status.setFont(new Font("Tahoma", Font.PLAIN, 28));
 		Title_Status.setHorizontalAlignment(SwingConstants.CENTER);
-		Title_Status.setBounds(201, 13, 371, 58);
+		Title_Status.setBounds(422, 13, 371, 58);
 		TableStatus.add(Title_Status);
-		
-		lblMap = new JLabel("Map");
-		lblMap.setHorizontalAlignment(SwingConstants.CENTER);
-		lblMap.setFont(new Font("Tahoma", Font.PLAIN, 28));
-		lblMap.setBounds(805, 13, 371, 58);
-		TableStatus.add(lblMap);
-		
-		JButton Seperator_vertical = new JButton("");
-		Seperator_vertical.setEnabled(false);
-		Seperator_vertical.setBounds(791, 0, 2, 482);
-		TableStatus.add(Seperator_vertical);
 		
 		JButton Seperator_horizontal = new JButton("");
 		Seperator_horizontal.setEnabled(false);
 		Seperator_horizontal.setBounds(0, 473, 1188, 9);
 		TableStatus.add(Seperator_horizontal);
 		
-		JToggleButton Table6 = new JToggleButton("Table 6");
-		Table6.setForeground(Color.WHITE);
-		Table6.setFont(new Font("Tahoma", Font.BOLD, 20));
-		Table6.setBackground(Color.RED);
-		Table6.setBounds(12, 292, 161, 58);
-		TableStatus.add(Table6);
-		
-		JToggleButton Table3 = new JToggleButton("Table 3");
-		Table3.setForeground(Color.WHITE);
-		Table3.setFont(new Font("Tahoma", Font.BOLD, 20));
-		Table3.setBackground(Color.RED);
-		Table3.setBounds(211, 191, 161, 58);
-		TableStatus.add(Table3);
-		
-		JToggleButton Table4 = new JToggleButton("Table 4");
+		Table4 = new JToggleButton("Table 4");
 		Table4.setForeground(Color.WHITE);
 		Table4.setFont(new Font("Tahoma", Font.BOLD, 20));
 		Table4.setBackground(Color.RED);
-		Table4.setBounds(411, 191, 161, 58);
+		Table4.setBounds(249, 303, 161, 58);
 		TableStatus.add(Table4);
 		
-		JToggleButton Table9 = new JToggleButton("Table 9");
-		Table9.setForeground(Color.WHITE);
-		Table9.setFont(new Font("Tahoma", Font.BOLD, 20));
-		Table9.setBackground(Color.RED);
-		Table9.setBounds(618, 292, 161, 58);
-		TableStatus.add(Table9);
+		Table3 = new JToggleButton("Table 3");
+		Table3.setForeground(Color.WHITE);
+		Table3.setFont(new Font("Tahoma", Font.BOLD, 20));
+		Table3.setBackground(Color.RED);
+		Table3.setBounds(193, 217, 161, 58);
+		TableStatus.add(Table3);
 		
-		JToggleButton Table2 = new JToggleButton("Table 2");
-		Table2.setForeground(Color.WHITE);
-		Table2.setFont(new Font("Tahoma", Font.BOLD, 20));
-		Table2.setBackground(Color.RED);
-		Table2.setBounds(12, 191, 161, 58);
-		TableStatus.add(Table2);
-		
-		JToggleButton Table7 = new JToggleButton("Table 7");
-		Table7.setForeground(Color.WHITE);
-		Table7.setFont(new Font("Tahoma", Font.BOLD, 20));
-		Table7.setBackground(Color.RED);
-		Table7.setBounds(211, 292, 161, 58);
-		TableStatus.add(Table7);
-		
-		JToggleButton Table8 = new JToggleButton("Table 8");
-		Table8.setForeground(Color.WHITE);
-		Table8.setFont(new Font("Tahoma", Font.BOLD, 20));
-		Table8.setBackground(Color.RED);
-		Table8.setBounds(411, 292, 161, 58);
-		TableStatus.add(Table8);
-		
-		JToggleButton Table5 = new JToggleButton("Table 5");
+		Table5 = new JToggleButton("Table 5");
 		Table5.setForeground(Color.WHITE);
 		Table5.setFont(new Font("Tahoma", Font.BOLD, 20));
 		Table5.setBackground(Color.RED);
-		Table5.setBounds(618, 191, 161, 58);
+		Table5.setBounds(820, 123, 161, 58);
 		TableStatus.add(Table5);
 		
-		JToggleButton Table10 = new JToggleButton("Table 10");
+		Table7 = new JToggleButton("Table 7");
+		Table7.setForeground(Color.WHITE);
+		Table7.setFont(new Font("Tahoma", Font.BOLD, 20));
+		Table7.setBackground(Color.RED);
+		Table7.setBounds(820, 303, 161, 58);
+		TableStatus.add(Table7);
+		
+		Table2 = new JToggleButton("Table 2");
+		Table2.setForeground(Color.WHITE);
+		Table2.setFont(new Font("Tahoma", Font.BOLD, 20));
+		Table2.setBackground(Color.RED);
+		Table2.setBounds(249, 123, 161, 58);
+		TableStatus.add(Table2);
+		
+		Table9 = new JToggleButton("Table 9");
+		Table9.setForeground(Color.WHITE);
+		Table9.setFont(new Font("Tahoma", Font.BOLD, 20));
+		Table9.setBackground(Color.RED);
+		Table9.setBounds(473, 272, 265, 65);
+		TableStatus.add(Table9);
+		
+		Table8 = new JToggleButton("Table 8");
+		Table8.setForeground(Color.WHITE);
+		Table8.setFont(new Font("Tahoma", Font.BOLD, 20));
+		Table8.setBackground(Color.RED);
+		Table8.setBounds(473, 171, 265, 73);
+		TableStatus.add(Table8);
+		
+		Table6 = new JToggleButton("Table 6");
+		Table6.setForeground(Color.WHITE);
+		Table6.setFont(new Font("Tahoma", Font.BOLD, 20));
+		Table6.setBackground(Color.RED);
+		Table6.setBounds(859, 217, 161, 58);
+		TableStatus.add(Table6);
+		
+		Table10 = new JToggleButton("Table 10");
 		Table10.setForeground(Color.WHITE);
 		Table10.setFont(new Font("Tahoma", Font.BOLD, 20));
 		Table10.setBackground(Color.RED);
-		Table10.setBounds(306, 381, 161, 58);
+		Table10.setBounds(422, 376, 392, 58);
 		TableStatus.add(Table10);
 		
 		Table1 = new JToggleButton("Table 1");
@@ -258,103 +240,44 @@ public class BusboyProject extends JFrame implements ActionListener{
 		Table1.setForeground(Color.WHITE);
 		Table1.setFont(new Font("Tahoma", Font.BOLD, 20));
 		Table1.setBackground(Color.RED);
-		Table1.setBounds(306, 106, 161, 58);
+		Table1.setBounds(422, 84, 386, 58);
 		TableStatus.add(Table1);
 		TableStatus.setVisible(true);
-		
-		
-		logoutButton.addActionListener(this);
 		
 		UIManager.put("ToggleButton.select", Color.GREEN);
 		SwingUtilities.updateComponentTreeUI(Table1);
 		SwingUtilities.updateComponentTreeUI(Table2);
 		SwingUtilities.updateComponentTreeUI(Table3);
-		SwingUtilities.updateComponentTreeUI(Table4);
 		SwingUtilities.updateComponentTreeUI(Table5);
 		SwingUtilities.updateComponentTreeUI(Table6);
-		SwingUtilities.updateComponentTreeUI(Table7);
-		SwingUtilities.updateComponentTreeUI(Table8);
+		SwingUtilities.updateComponentTreeUI(Table4);
 		SwingUtilities.updateComponentTreeUI(Table9);
+		SwingUtilities.updateComponentTreeUI(Table8);
+		SwingUtilities.updateComponentTreeUI(Table7);
 		SwingUtilities.updateComponentTreeUI(Table10);
 		
-		JButton Table1_Map = new JButton("1");
-		Table1_Map.setBackground(Color.RED);
-		Table1_Map.setForeground(Color.WHITE);
-		Table1_Map.setFont(new Font("Tahoma", Font.BOLD, 16));
-		Table1_Map.setBounds(805, 84, 371, 47);
-		TableStatus.add(Table1_Map);
+		Help = new GradientButton("HELP");
 		
-		JButton Table2_Map = new JButton("2");
-		Table2_Map.setBackground(Color.RED);
-		Table2_Map.setForeground(Color.WHITE);
-		Table2_Map.setEnabled(false);
-		Table2_Map.setFont(new Font("Tahoma", Font.BOLD, 16));
-		Table2_Map.setBounds(805, 144, 111, 63);
-		TableStatus.add(Table2_Map);
+		Help.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(rootPanel, "Select a table to toggle its status. Red = Unclean, Green = Clean");
+			}
+		});
 		
-		JButton Table3_Map = new JButton("3");
-		Table3_Map.setBackground(Color.RED);
-		Table3_Map.setForeground(Color.WHITE);
-		Table3_Map.setEnabled(false);
-		Table3_Map.setFont(new Font("Tahoma", Font.BOLD, 16));
-		Table3_Map.setBounds(1065, 144, 111, 63);
-		TableStatus.add(Table3_Map);
+		Help.setText("HELP");
+		Help.setFont(Help.getFont().deriveFont(16f));
+		Help.setFocusPainted(false);
+		Help.setBounds(418, 551, 371, 66);
+		MainPanel.add(Help);
 		
-		JButton Table4_Map = new JButton("4");
-		Table4_Map.setBackground(Color.RED);
-		Table4_Map.setForeground(Color.WHITE);
-		Table4_Map.setEnabled(false);
-		Table4_Map.setFont(new Font("Tahoma", Font.BOLD, 16));
-		Table4_Map.setBounds(805, 225, 111, 63);
-		TableStatus.add(Table4_Map);
+		Message = new GradientButton("MESSAGE");
+		Message.setText("MESSAGE");
+		Message.setFont(Message.getFont().deriveFont(16f));
+		Message.setFocusPainted(false);
+		Message.setBounds(817, 551, 371, 66);
+		MainPanel.add(Message);
 		
-		JButton Table5_Map = new JButton("5");
-		Table5_Map.setForeground(Color.WHITE);
-		Table5_Map.setBackground(Color.RED);
-		Table5_Map.setEnabled(false);
-		Table5_Map.setFont(new Font("Tahoma", Font.BOLD, 16));
-		Table5_Map.setBounds(1065, 225, 111, 63);
-		TableStatus.add(Table5_Map);
-		
-		JButton Table6_Map = new JButton("6");
-		Table6_Map.setForeground(Color.WHITE);
-		Table6_Map.setBackground(Color.RED);
-		Table6_Map.setEnabled(false);
-		Table6_Map.setFont(new Font("Tahoma", Font.BOLD, 16));
-		Table6_Map.setBounds(805, 312, 111, 63);
-		TableStatus.add(Table6_Map);
-		
-		JButton Table7_Map = new JButton("7");
-		Table7_Map.setBackground(Color.RED);
-		Table7_Map.setForeground(Color.WHITE);
-		Table7_Map.setEnabled(false);
-		Table7_Map.setFont(new Font("Tahoma", Font.BOLD, 16));
-		Table7_Map.setBounds(1065, 312, 111, 63);
-		TableStatus.add(Table7_Map);
-		
-		JButton Table8_Map = new JButton("8");
-		Table8_Map.setForeground(Color.WHITE);
-		Table8_Map.setBackground(Color.RED);
-		Table8_Map.setEnabled(false);
-		Table8_Map.setFont(new Font("Tahoma", Font.BOLD, 16));
-		Table8_Map.setBounds(805, 390, 371, 47);
-		TableStatus.add(Table8_Map);
-		
-		JButton Table9_Map = new JButton("9");
-		Table9_Map.setBackground(Color.RED);
-		Table9_Map.setForeground(Color.WHITE);
-		Table9_Map.setEnabled(false);
-		Table9_Map.setFont(new Font("Tahoma", Font.BOLD, 16));
-		Table9_Map.setBounds(946, 144, 93, 105);
-		TableStatus.add(Table9_Map);
-		
-		JButton Table10_Map = new JButton("10");
-		Table10_Map.setBackground(Color.RED);
-		Table10_Map.setForeground(Color.WHITE);
-		Table10_Map.setEnabled(false);
-		Table10_Map.setFont(new Font("Tahoma", Font.BOLD, 16));
-		Table10_Map.setBounds(946, 268, 93, 105);
-		TableStatus.add(Table10_Map);
+		logoutButton.addActionListener(this);
 		
 		MainPanel.setVisible(true);
 	}
@@ -417,48 +340,11 @@ public void actionPerformed(ActionEvent e) {
 		{
 			updateClock();
 		}
-	if(a == Table1)
-	{
-		Table1_Map.setVisible(false);
-		
-	}
-	if(a == Table2)
-	{
-		
-	}
-	if(a == Table3)
-	{
-		
-	}
-	if(a == Table4)
-	{
-		
-	}
-	if(a == Table5)
-	{
-		
-	}
-	if(a == Table6)
-	{
-		
-	}
-	if(a == Table7)
-	{
-		
-	}
-	if(a == Table8)
-	{
-		
-	}
-	if(a == Table9)
-	{
-		
-	}
-	if(a == Table10)
-	{
-		
-	}
+	if(a == Message)
+		{
 	
+		}
+
 	}
 	}
 		
