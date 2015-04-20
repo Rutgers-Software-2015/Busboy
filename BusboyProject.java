@@ -2,6 +2,7 @@ package Busboy;
 //import ADT.*;
 
 import java.awt.EventQueue;
+
 import javax.swing.JFrame;
 
 import java.awt.event.ItemEvent;
@@ -23,6 +24,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Rectangle;
 import java.awt.SystemColor;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.util.Date;
 
@@ -43,8 +45,8 @@ import javax.swing.UIManager;
 
 
 
+
 import Login.LoginWindow;
-import Shared.GUITemplates.SubframeTemplate;
 import Shared.Gradients.GradientButton;
 import Shared.Gradients.GradientPanel;
 
@@ -74,6 +76,7 @@ public class BusboyProject extends JFrame implements ActionListener{
 			public JToggleButton Table8;
 			public JToggleButton Table7;
 			public JToggleButton Table10;
+			private Busboy_Handler b = new Busboy_Handler(); 
 			
 	public BusboyProject() {
 		
@@ -165,73 +168,83 @@ public class BusboyProject extends JFrame implements ActionListener{
 		Table4.setForeground(Color.WHITE);
 		Table4.setFont(new Font("Tahoma", Font.BOLD, 20));
 		Table4.setBackground(Color.RED);
-		Table4.setBounds(249, 303, 161, 58);
+		Table4.setBounds(249, 217, 161, 58);
 		TableStatus.add(Table4);
+		Table4.addActionListener(this);
 		
 		Table3 = new JToggleButton("Table 3");
 		Table3.setForeground(Color.WHITE);
 		Table3.setFont(new Font("Tahoma", Font.BOLD, 20));
 		Table3.setBackground(Color.RED);
-		Table3.setBounds(193, 217, 161, 58);
+		Table3.setBounds(782, 123, 161, 58);
 		TableStatus.add(Table3);
+		Table3.addActionListener(this);
 		
 		Table5 = new JToggleButton("Table 5");
 		Table5.setForeground(Color.WHITE);
 		Table5.setFont(new Font("Tahoma", Font.BOLD, 20));
 		Table5.setBackground(Color.RED);
-		Table5.setBounds(820, 123, 161, 58);
+		Table5.setBounds(521, 176, 161, 58);
 		TableStatus.add(Table5);
+		Table5.addActionListener(this);
 		
 		Table7 = new JToggleButton("Table 7");
 		Table7.setForeground(Color.WHITE);
 		Table7.setFont(new Font("Tahoma", Font.BOLD, 20));
 		Table7.setBackground(Color.RED);
-		Table7.setBounds(820, 303, 161, 58);
+		Table7.setBounds(249, 303, 161, 58);
 		TableStatus.add(Table7);
+		Table7.addActionListener(this);
 		
 		Table2 = new JToggleButton("Table 2");
 		Table2.setForeground(Color.WHITE);
 		Table2.setFont(new Font("Tahoma", Font.BOLD, 20));
 		Table2.setBackground(Color.RED);
-		Table2.setBounds(249, 123, 161, 58);
+		Table2.setBounds(521, 84, 161, 58);
 		TableStatus.add(Table2);
+		Table2.addActionListener(this);
 		
 		Table9 = new JToggleButton("Table 9");
 		Table9.setForeground(Color.WHITE);
 		Table9.setFont(new Font("Tahoma", Font.BOLD, 20));
 		Table9.setBackground(Color.RED);
-		Table9.setBounds(473, 272, 265, 65);
+		Table9.setBounds(782, 303, 161, 58);
 		TableStatus.add(Table9);
+		Table9.addActionListener(this);
 		
 		Table8 = new JToggleButton("Table 8");
 		Table8.setForeground(Color.WHITE);
 		Table8.setFont(new Font("Tahoma", Font.BOLD, 20));
 		Table8.setBackground(Color.RED);
-		Table8.setBounds(473, 171, 265, 73);
+		Table8.setBounds(521, 269, 161, 58);
 		TableStatus.add(Table8);
+		Table8.addActionListener(this);
 		
 		Table6 = new JToggleButton("Table 6");
 		Table6.setForeground(Color.WHITE);
 		Table6.setFont(new Font("Tahoma", Font.BOLD, 20));
 		Table6.setBackground(Color.RED);
-		Table6.setBounds(859, 217, 161, 58);
+		Table6.setBounds(782, 217, 161, 58);
 		TableStatus.add(Table6);
+		Table6.addActionListener(this);
 		
 		Table10 = new JToggleButton("Table 10");
 		Table10.setForeground(Color.WHITE);
 		Table10.setFont(new Font("Tahoma", Font.BOLD, 20));
 		Table10.setBackground(Color.RED);
-		Table10.setBounds(422, 376, 392, 58);
+		Table10.setBounds(521, 369, 161, 58);
 		TableStatus.add(Table10);
+		Table10.addActionListener(this);
 		
 		Table1 = new JToggleButton("Table 1");
 		Table1.addActionListener(this);
 		Table1.setForeground(Color.WHITE);
 		Table1.setFont(new Font("Tahoma", Font.BOLD, 20));
 		Table1.setBackground(Color.RED);
-		Table1.setBounds(422, 84, 386, 58);
+		Table1.setBounds(249, 123, 161, 58);
 		TableStatus.add(Table1);
 		TableStatus.setVisible(true);
+		Table1.addActionListener(this);
 		
 		UIManager.put("ToggleButton.select", Color.GREEN);
 		SwingUtilities.updateComponentTreeUI(Table1);
@@ -269,6 +282,18 @@ public class BusboyProject extends JFrame implements ActionListener{
 		logoutButton.addActionListener(this);
 		
 		MainPanel.setVisible(true);
+		
+		//Initial Table Status
+		initialTableStatus(Table1,0);
+		initialTableStatus(Table2,1);
+		initialTableStatus(Table3,2);
+		initialTableStatus(Table4,3);
+		initialTableStatus(Table5,4);
+		initialTableStatus(Table6,5);
+		initialTableStatus(Table7,6);
+		initialTableStatus(Table8,7);
+		initialTableStatus(Table9,8);
+		initialTableStatus(Table10,9);
 	}
 	
 	
@@ -322,6 +347,7 @@ public void actionPerformed(ActionEvent e) {
 	Object a = e.getSource();
 	if(a == logoutButton)
 		{
+			b.disconnect();
 			new LoginWindow();
 			dispose();
 		}
@@ -333,8 +359,68 @@ public void actionPerformed(ActionEvent e) {
 		{
 	
 		}
+	if(a == Table1){
+		ChangeTableStatus(Table1,1);
+	}
+	if(a == Table2){
+		ChangeTableStatus(Table2,2);
+	}
+	if(a == Table3){
+		ChangeTableStatus(Table3,3);
+	}
+	if(a == Table4){
+		ChangeTableStatus(Table4,4);
+	}
+	if(a == Table5){
+		ChangeTableStatus(Table5,5);
+	}
+	if(a == Table6){
+		ChangeTableStatus(Table6,6);
+	}
+	if(a == Table7){
+		ChangeTableStatus(Table7,7);
+	}
+	if(a == Table8){
+		ChangeTableStatus(Table8,8);
+	}
+	if(a == Table9){
+		ChangeTableStatus(Table9,9);
+	}
+	if(a == Table10){
+		ChangeTableStatus(Table10,10);
+	}
 
 	}
+public void ChangeTableStatus(JToggleButton Table, int Table_ID){
+	b.tell("use MAINDB;");
+	b.tell("Select * from MAINDB.Table_Statuses Order by Table_ID;");
+	if(Table.isSelected()== true){
+		b.update("UPDATE MAINDB.Table_Statuses SET T_Status = 'Clean' WHERE TABLE_ID = "+Table_ID+";");
+		System.out.println("Clean");
+	}
+	if(Table.isSelected()== false){
+		b.update("UPDATE MAINDB.Table_Statuses SET T_Status = 'Unclean' WHERE TABLE_ID = "+Table_ID+";");
+		System.out.println("Unclean");
+	}
+}
+public void initialTableStatus(JToggleButton Table,int index){
+	b.tell("use MAINDB;");
+	b.tell("Select * from MAINDB.Table_Statuses Order by Table_ID;");
+	try {
+		if (b.T_Status().get(index).toString().equals("Unclean")){
+			Table.setSelected(false);
+			System.out.println("Unclean");
+		}
+		if (b.T_Status().get(index).toString().equals("Clean")){
+			Table.setSelected(true);
+			System.out.println("Clean");
+		}
+		
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+}
 	}
 		
 
