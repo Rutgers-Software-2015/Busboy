@@ -46,15 +46,19 @@ import javax.swing.UIManager;
 
 
 
+
 import Login.LoginWindow;
 import Shared.Gradients.GradientButton;
 import Shared.Gradients.GradientPanel;
+import Shared.Notifications.NotificationGUI;
 
 import javax.swing.JSeparator;
 @SuppressWarnings("unused")
 
 public class BusboyProject extends JFrame implements ActionListener{
 	//Swing Variables
+	//Notification GUI
+	private NotificationGUI notification;
 			private JPanel rootPanel,titlePanel;
 			private GradientPanel MainPanel;
 			private GradientButton logoutButton;
@@ -123,6 +127,9 @@ public class BusboyProject extends JFrame implements ActionListener{
 	private void setRootPanel()
 	{
 		rootPanel = new JPanel();
+		// Create Notification GUI
+		notification = new NotificationGUI(25,"Busboy");
+		rootPanel.add(notification);
 		rootPanel.setLayout(null);
 		rootPanel.add(titlePanel);
 		rootPanel.add(MainPanel);
@@ -396,11 +403,9 @@ public void ChangeTableStatus(JToggleButton Table, int Table_ID){
 	b.tell("Select * from MAINDB.Table_Statuses Order by Table_ID;");
 	if(Table.isSelected()== true){
 		b.update("UPDATE MAINDB.Table_Statuses SET T_Status = 'Clean' WHERE TABLE_ID = "+Table_ID+";");
-		System.out.println("Clean");
 	}
 	if(Table.isSelected()== false){
 		b.update("UPDATE MAINDB.Table_Statuses SET T_Status = 'Unclean' WHERE TABLE_ID = "+Table_ID+";");
-		System.out.println("Unclean");
 	}
 }
 public void initialTableStatus(JToggleButton Table,int index){
@@ -409,11 +414,9 @@ public void initialTableStatus(JToggleButton Table,int index){
 	try {
 		if (b.T_Status().get(index).toString().equals("Unclean")){
 			Table.setSelected(false);
-			System.out.println("Unclean");
 		}
 		if (b.T_Status().get(index).toString().equals("Clean")){
 			Table.setSelected(true);
-			System.out.println("Clean");
 		}
 		
 	} catch (SQLException e) {
