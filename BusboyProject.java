@@ -106,8 +106,10 @@ public class BusboyProject extends JFrame implements ActionListener{
 	            @Override
 	            public void windowClosing(WindowEvent e)
 	            {
-	                new LoginWindow();
-	                dispose();
+	    			notification.close();
+	    			b.disconnect();
+	    			new LoginWindow();
+	    			dispose();
 	            }
 	        });
 		
@@ -354,9 +356,10 @@ public void actionPerformed(ActionEvent e) {
 	Object a = e.getSource();
 	if(a == logoutButton)
 		{
-			b.disconnect();
-			new LoginWindow();
-			dispose();
+		notification.close();
+		b.disconnect();
+		new LoginWindow();
+		dispose();
 		}
 	if(a == timer)
 		{
