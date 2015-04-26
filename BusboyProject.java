@@ -63,7 +63,6 @@ public class BusboyProject extends JFrame implements ActionListener{
 			private GradientPanel MainPanel;
 			private GradientButton logoutButton;
 			public GradientButton Help;
-			public GradientButton Message;
 			//private GradientButton logoutButton;
 			private JLabel titleLabel,dateAndTime;
 			//Other Variables
@@ -148,7 +147,7 @@ public class BusboyProject extends JFrame implements ActionListener{
 		MainPanel.setBounds(0,0,1200,652);
 		
 		logoutButton = new GradientButton("LOGOUT");
-		logoutButton.setBounds(10, 551, 371, 66);
+		logoutButton.setBounds(10, 550, 576, 66);
 		logoutButton.setFocusPainted(false);
 		logoutButton.setFont(logoutButton.getFont().deriveFont(16.0f));
 		MainPanel.add(logoutButton);
@@ -278,31 +277,24 @@ public class BusboyProject extends JFrame implements ActionListener{
 		Help.setText("HELP");
 		Help.setFont(Help.getFont().deriveFont(16f));
 		Help.setFocusPainted(false);
-		Help.setBounds(418, 551, 371, 66);
+		Help.setBounds(598, 550, 590, 66);
 		MainPanel.add(Help);
-		
-		Message = new GradientButton("MESSAGE");
-		Message.setText("MESSAGE");
-		Message.setFont(Message.getFont().deriveFont(16f));
-		Message.setFocusPainted(false);
-		Message.setBounds(817, 551, 371, 66);
-		MainPanel.add(Message);
 		
 		logoutButton.addActionListener(this);
 		
 		MainPanel.setVisible(true);
 		
 		//Initial Table Status
-		initialTableStatus(Table1,0);
-		initialTableStatus(Table2,1);
-		initialTableStatus(Table3,2);
-		initialTableStatus(Table4,3);
-		initialTableStatus(Table5,4);
-		initialTableStatus(Table6,5);
-		initialTableStatus(Table7,6);
-		initialTableStatus(Table8,7);
-		initialTableStatus(Table9,8);
-		initialTableStatus(Table10,9);
+		b.initialTableStatus(Table1,0);
+		b.initialTableStatus(Table2,1);
+		b.initialTableStatus(Table3,2);
+		b.initialTableStatus(Table4,3);
+		b.initialTableStatus(Table5,4);
+		b.initialTableStatus(Table6,5);
+		b.initialTableStatus(Table7,6);
+		b.initialTableStatus(Table8,7);
+		b.initialTableStatus(Table9,8);
+		b.initialTableStatus(Table10,9);
 	}
 	
 	
@@ -365,68 +357,39 @@ public void actionPerformed(ActionEvent e) {
 		{
 			updateClock();
 		}
-	if(a == Message)
-		{
-	
-		}
 	if(a == Table1){
-		ChangeTableStatus(Table1,1);
+		b.ChangeTableStatus(Table1,1);
 	}
 	if(a == Table2){
-		ChangeTableStatus(Table2,2);
+		b.ChangeTableStatus(Table2,2);
 	}
 	if(a == Table3){
-		ChangeTableStatus(Table3,3);
+		b.ChangeTableStatus(Table3,3);
 	}
 	if(a == Table4){
-		ChangeTableStatus(Table4,4);
+		b.ChangeTableStatus(Table4,4);
 	}
 	if(a == Table5){
-		ChangeTableStatus(Table5,5);
+		b.ChangeTableStatus(Table5,5);
 	}
 	if(a == Table6){
-		ChangeTableStatus(Table6,6);
+		b.ChangeTableStatus(Table6,6);
 	}
 	if(a == Table7){
-		ChangeTableStatus(Table7,7);
+		b.ChangeTableStatus(Table7,7);
 	}
 	if(a == Table8){
-		ChangeTableStatus(Table8,8);
+		b.ChangeTableStatus(Table8,8);
 	}
 	if(a == Table9){
-		ChangeTableStatus(Table9,9);
+		b.ChangeTableStatus(Table9,9);
 	}
 	if(a == Table10){
-		ChangeTableStatus(Table10,10);
+		b.ChangeTableStatus(Table10,10);
 	}
 
 	}
-public void ChangeTableStatus(JToggleButton Table, int Table_ID){
-	b.tell("use MAINDB;");
-	b.tell("Select * from MAINDB.Table_Statuses Order by Table_ID;");
-	if(Table.isSelected()== true){
-		b.update("UPDATE MAINDB.Table_Statuses SET T_Status = 'Clean' WHERE TABLE_ID = "+Table_ID+";");
-	}
-	if(Table.isSelected()== false){
-		b.update("UPDATE MAINDB.Table_Statuses SET T_Status = 'Unclean' WHERE TABLE_ID = "+Table_ID+";");
-	}
-}
-public void initialTableStatus(JToggleButton Table,int index){
-	b.tell("use MAINDB;");
-	b.tell("Select * from MAINDB.Table_Statuses Order by Table_ID;");
-	try {
-		if (b.T_Status().get(index).toString().equals("Unclean")){
-			Table.setSelected(false);
-		}
-		if (b.T_Status().get(index).toString().equals("Clean")){
-			Table.setSelected(true);
-		}
-		
-	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-}
+
 	}
 		
 
