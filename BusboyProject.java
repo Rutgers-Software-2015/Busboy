@@ -47,6 +47,7 @@ import javax.swing.UIManager;
 
 
 
+
 import Login.LoginWindow;
 import Shared.Gradients.GradientButton;
 import Shared.Gradients.GradientPanel;
@@ -267,18 +268,12 @@ public class BusboyProject extends JFrame implements ActionListener{
 		SwingUtilities.updateComponentTreeUI(Table10);
 		
 		Help = new GradientButton("HELP");
-		
-		Help.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(rootPanel, "Select a table to toggle its status. Red = Unclean, Green = Clean");
-			}
-		});
-		
 		Help.setText("HELP");
 		Help.setFont(Help.getFont().deriveFont(16f));
 		Help.setFocusPainted(false);
 		Help.setBounds(598, 550, 590, 66);
 		MainPanel.add(Help);
+		Help.addActionListener(this);
 		
 		logoutButton.addActionListener(this);
 		
@@ -357,6 +352,32 @@ public void actionPerformed(ActionEvent e) {
 		{
 			updateClock();
 		}
+	if(a == Help){
+		int optionChoiceB = 0;
+		String[] optionsAvailableB = {"Table Status","Logout","Notifications"};
+		optionChoiceB = JOptionPane.showOptionDialog(new JFrame(), "<html><body><div width='180px' align='center'>Which function would you like help with?</div></body></html>", "Help",JOptionPane.DEFAULT_OPTION , JOptionPane.QUESTION_MESSAGE, null, optionsAvailableB, 0);
+		switch(optionChoiceB){
+		case 0: // Table Status
+			JOptionPane.showMessageDialog(this, ""
+				+ "To change the status of a table, simply select said table from the visible table arrangement. If the color of the"
+				+ "\n table is red, then it is unclean. If it is green, then the table is clean.");
+				break;
+		case 1: // Logout
+			JOptionPane.showMessageDialog(this, ""
+				+ "Upon selection of this button, the interface will disconnect.");
+				break;
+		case 2: // Notifications
+			JOptionPane.showMessageDialog(this, ""
+				+ "The notifications can be found at the top right corner of the interface. Simply hover over the clock"
+				+ "\n and select the 'Notificaitons' label. A list of outgoing and incoming messages will be displayed."
+				+ "\n To use these notifications, first select the 'Send message' option, select 'Private' or 'Public'."
+				+ "\n Selecting 'Private' option will make the message visible only to the employee the message is sent to"
+				+ "\n Selecting the 'Public' option will make the message visible to all employees. Type in an Employee ID"
+				+ "\n or the position of the employee to send a message typed in under the 'Message' option. If the position"
+				+ "\n of the Employee is selected, the message will be sent to all employees of the position.");
+				break;
+		}
+	}
 	if(a == Table1){
 		b.ChangeTableStatus(Table1,1);
 	}
