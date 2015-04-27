@@ -26,6 +26,7 @@ import java.awt.Rectangle;
 import java.awt.SystemColor;
 import java.sql.SQLException;
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.swing.BorderFactory;
@@ -48,13 +49,15 @@ import javax.swing.UIManager;
 
 
 
+
+
 import Login.LoginWindow;
 import Shared.Gradients.GradientButton;
 import Shared.Gradients.GradientPanel;
 import Shared.Notifications.NotificationGUI;
 
 import javax.swing.JSeparator;
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused","rawtypes","unchecked"})
 
 public class BusboyGUI extends JFrame implements ActionListener{
 	//Swing Variables
@@ -81,7 +84,7 @@ public class BusboyGUI extends JFrame implements ActionListener{
 			public JToggleButton Table7;
 			public JToggleButton Table10;
 			private BusboyCommunicator b = new BusboyCommunicator(); 
-			
+			private BusboyHandler bHandler = new BusboyHandler(); 
 	public BusboyGUI() {
 		
 		super();
@@ -279,17 +282,12 @@ public class BusboyGUI extends JFrame implements ActionListener{
 		
 		MainPanel.setVisible(true);
 		
+		//Create the List of ToggleButtons
+		createList();
+		
 		//Initial Table Status
-		b.initialTableStatus(Table1,0);
-		b.initialTableStatus(Table2,1);
-		b.initialTableStatus(Table3,2);
-		b.initialTableStatus(Table4,3);
-		b.initialTableStatus(Table5,4);
-		b.initialTableStatus(Table6,5);
-		b.initialTableStatus(Table7,6);
-		b.initialTableStatus(Table8,7);
-		b.initialTableStatus(Table9,8);
-		b.initialTableStatus(Table10,9);
+		bHandler.InitialTableStatuses(createList());
+		
 	}
 	
 	
@@ -379,39 +377,47 @@ public void actionPerformed(ActionEvent e) {
 		}
 	}
 	if(a == Table1){
-		b.ChangeTableStatus(Table1,1);
+		bHandler.ChangeTableStatus(createList(),1);
 	}
 	if(a == Table2){
-		b.ChangeTableStatus(Table2,2);
+		bHandler.ChangeTableStatus(createList(),2);
 	}
 	if(a == Table3){
-		b.ChangeTableStatus(Table3,3);
+		bHandler.ChangeTableStatus(createList(),3);
 	}
 	if(a == Table4){
-		b.ChangeTableStatus(Table4,4);
+		bHandler.ChangeTableStatus(createList(),4);
 	}
 	if(a == Table5){
-		b.ChangeTableStatus(Table5,5);
+		bHandler.ChangeTableStatus(createList(),5);
+		//b.ChangeTableStatus(Table5,5);
 	}
 	if(a == Table6){
-		b.ChangeTableStatus(Table6,6);
+		bHandler.ChangeTableStatus(createList(),6);
 	}
 	if(a == Table7){
-		b.ChangeTableStatus(Table7,7);
+		bHandler.ChangeTableStatus(createList(),7);
 	}
 	if(a == Table8){
-		b.ChangeTableStatus(Table8,8);
+		bHandler.ChangeTableStatus(createList(),8);
 	}
 	if(a == Table9){
-		b.ChangeTableStatus(Table9,9);
+		bHandler.ChangeTableStatus(createList(),9);
 	}
 	if(a == Table10){
-		b.ChangeTableStatus(Table10,10);
+		bHandler.ChangeTableStatus(createList(),10);
 	}
 
 	}
 
-	}
+public ArrayList<JToggleButton> createList(){
+	ArrayList<JToggleButton> ToggleButtons = new ArrayList<JToggleButton>();
+	ToggleButtons.add(Table1);ToggleButtons.add(Table2);ToggleButtons.add(Table3);ToggleButtons.add(Table4);ToggleButtons.add(Table5);
+	ToggleButtons.add(Table6);ToggleButtons.add(Table7);ToggleButtons.add(Table8);ToggleButtons.add(Table9);ToggleButtons.add(Table10);
+	return ToggleButtons;
+}
+}
+
 		
 
 
