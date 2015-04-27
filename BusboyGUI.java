@@ -56,7 +56,7 @@ import Shared.Notifications.NotificationGUI;
 import javax.swing.JSeparator;
 @SuppressWarnings("unused")
 
-public class BusboyProject extends JFrame implements ActionListener{
+public class BusboyGUI extends JFrame implements ActionListener{
 	//Swing Variables
 	//Notification GUI
 	private NotificationGUI notification;
@@ -80,9 +80,9 @@ public class BusboyProject extends JFrame implements ActionListener{
 			public JToggleButton Table8;
 			public JToggleButton Table7;
 			public JToggleButton Table10;
-			private Busboy_Handler b = new Busboy_Handler(); 
+			private BusboyCommunicator b = new BusboyCommunicator(); 
 			
-	public BusboyProject() {
+	public BusboyGUI() {
 		
 		super();
 		initialize();

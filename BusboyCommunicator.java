@@ -1,8 +1,8 @@
 package Busboy;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
 
 
 //import Manager.EmpObj;
@@ -13,11 +13,11 @@ import Manager.ManagerHandlers.*;
 import javax.swing.JToggleButton;
 
 
+
 import Shared.Communicator.DatabaseCommunicator;
 
-public class Busboy_Handler extends DatabaseCommunicator {
-	public Busboy_Handler()
-	{
+public class BusboyCommunicator extends DatabaseCommunicator {
+	public BusboyCommunicator(){
 		super();
 		connect("admin","gradMay17");
 		tell("use MAINDB;");
