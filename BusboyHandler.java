@@ -32,8 +32,8 @@ import Waiter.WaiterCommunicator;
 public class BusboyHandler{
 	
 	/**
-	 * This class facilitates interaction between the Host GUI
-	 * and the Host communicator
+	 * This class facilitates interaction between the Busboy GUI
+	 * and the Busboy communicator
 	 * 
 	 * @author David Arakelyan
 	 * @tester David Arakelyan
@@ -42,6 +42,7 @@ public class BusboyHandler{
 	 */
 	
 	public BusboyCommunicator b;
+	public LinkedList dirtyTables = new LinkedList();
 	
 	/**
 	 * Constructor
