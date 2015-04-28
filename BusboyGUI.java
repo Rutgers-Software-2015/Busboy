@@ -62,7 +62,7 @@ import javax.swing.JSeparator;
 public class BusboyGUI extends JFrame implements ActionListener{
 	//Swing Variables
 	//Notification GUI
-	private NotificationGUI notification;
+	public NotificationGUI notification;
 			private JPanel rootPanel,titlePanel;
 			private GradientPanel MainPanel;
 			private GradientButton logoutButton;
@@ -83,8 +83,8 @@ public class BusboyGUI extends JFrame implements ActionListener{
 			public JToggleButton Table8;
 			public JToggleButton Table7;
 			public JToggleButton Table10;
-			private BusboyCommunicator b = new BusboyCommunicator(); 
-			private BusboyHandler bHandler = new BusboyHandler(); 
+			public BusboyCommunicator b = new BusboyCommunicator(); 
+			public BusboyHandler bHandler = new BusboyHandler(); 
 	public BusboyGUI() {
 		
 		super();
@@ -390,7 +390,6 @@ public void actionPerformed(ActionEvent e) {
 	}
 	if(a == Table5){
 		bHandler.ChangeTableStatus(createList(),5);
-		//b.ChangeTableStatus(Table5,5);
 	}
 	if(a == Table6){
 		bHandler.ChangeTableStatus(createList(),6);
