@@ -60,6 +60,18 @@ import javax.swing.JSeparator;
 @SuppressWarnings({"unused","rawtypes","unchecked"})
 
 public class BusboyGUI extends JFrame implements ActionListener{
+	
+	/**
+	 * Class created for using the Busboy System
+	 * Uses DB as required throughout the code, 
+	 * and uses the Java Swing library to create a user interface
+	 * 
+	 * @author David Arakelyan
+	 * @tester David Arakelyan
+	 * @debugger David Arakelyan
+	 * 
+	 */
+	
 	//Swing Variables
 	//Notification GUI
 	public NotificationGUI notification;
@@ -409,6 +421,19 @@ public void actionPerformed(ActionEvent e) {
 
 	}
 
+
+/**
+ * This function will take all of the togglebuttons in the GUI and add 
+ * 	them to an array list. The togglebuttons along with their status
+ * 	(toggled or not) stored within this function will be used by the 
+ * 	handler to change their statuses (by selecting the togglebutton 
+ * 	from its index of storage within the array list) to make necessary
+ * 	changes to the GUI and Database. 
+ * 
+ * @return = ArrayList<JToggleButton>
+ * @param = String
+ * 
+ */
 public ArrayList<JToggleButton> createList(){
 	ArrayList<JToggleButton> ToggleButtons = new ArrayList<JToggleButton>();
 	ToggleButtons.add(Table1);ToggleButtons.add(Table2);ToggleButtons.add(Table3);ToggleButtons.add(Table4);ToggleButtons.add(Table5);
