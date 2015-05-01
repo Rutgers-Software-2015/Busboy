@@ -9,3 +9,15 @@ The 3 main classes that contain instances of the other subclasses are:
 BusboyCommunicator.java
 BusboyGUI.java
 BusboyHandler.java
+
+								      BusboyGUI.java
+											||
+											||
+											||
+											\/
+								    BusboyHandler.java
+											||				
+											||				
+											||
+											\/
+								  BusboyCommunicator.java
