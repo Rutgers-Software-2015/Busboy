@@ -96,7 +96,7 @@ public class BusboyGUI extends JFrame implements ActionListener{
 			public JToggleButton Table7;
 			public JToggleButton Table10;
 			public BusboyCommunicator b = new BusboyCommunicator(); 
-			public BusboyHandler bHandler = new BusboyHandler(); 
+			public BusboyHandler bHandler = new BusboyHandler(b); 
 	public BusboyGUI() {
 		
 		super();

@@ -51,9 +51,9 @@ public class BusboyHandler{
 	 * 
 	 */
 	
-	public BusboyHandler()
+	public BusboyHandler(BusboyCommunicator b)
 	{
-		this.b = new BusboyCommunicator();
+		this.b = b;
 		this.b.connect("admin", "gradMay17");
 		this.b.tell("use MAINDB;");
 	}
