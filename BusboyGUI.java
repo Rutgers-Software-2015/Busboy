@@ -106,7 +106,7 @@ public class BusboyGUI extends JFrame implements ActionListener{
 
 	
 	private void initialize() {
-		this.setTitle("Your GUI");
+		this.setTitle("Busboy GUI");
 		this.setVisible(false);
 		this.setResizable(true);
 		this.setSize(1200,700);
